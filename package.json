@@ -1,0 +1,28 @@
+{
+  "name": "myrename",
+  "version": "1.0.0",
+  "description": "I need to reanme files all the time and this helps",
+  "main": "server.js",
+  "bin": {
+    "myrename": "./server.js"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tooshel/myrename.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tooshel/myrename/issues"
+  },
+  "homepage": "https://github.com/tooshel/myrename",
+  "dependencies": {
+    "glob": "^5.0.3",
+    "minimist": "^1.1.1",
+    "path": "^0.11.14"
+  }
+}
