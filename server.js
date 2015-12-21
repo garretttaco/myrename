@@ -9,17 +9,30 @@ var path = require("path");
 var fs = require("fs");
 var argv = require('minimist')(process.argv.slice(2));
 
-var texttoreplace = argv.text || argv._[0] || "aaaa";
+var texttoreplace = argv.text || argv._[0] || "aaaaaaaaaa";
 var replacewith = argv.with || argv._[1] || "";
 
+var prepend = argv.prepend || "";
+
 // glob(__dirname + "/players/**/*.*", function(err, files) {
-console.log("INFO:", texttoreplace, replacewith);
+console.log("INFO:", texttoreplace, replacewith, prepend);
+
+if(!replacewith && !prepend) {
+	console.log("Help HERE!")
+	return;
+}
+
 glob("*.*", function(err, files) {
 	var processed = 0;
 	files.forEach(function(file) {
 		var dir = path.dirname(file);
 		var filename = path.basename(file);
-		var newfilename = filename.replace(texttoreplace, replacewith);
+
+		if(prepend)  {
+			var newfilename = prepend+filename;
+		} else {
+			var newfilename = filename.replace(texttoreplace, replacewith);
+		}
 
 		console.log("Old Name:", filename);
 		console.log("New Name:", newfilename);
@@ -28,6 +41,6 @@ glob("*.*", function(err, files) {
 		
 		processed++;
 	});
-	console.log("INFO:", texttoreplace, replacewith);
+	console.log("INFO:", texttoreplace, replacewith, prepend);
 	console.log(processed + " files processed");
 });
