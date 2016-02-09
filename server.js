@@ -18,7 +18,7 @@ var prepend = argv.prepend || "";
 console.log("INFO:", texttoreplace, replacewith, prepend);
 
 if(!replacewith && !prepend) {
-	console.log("Help HERE!")
+	help();
 	return;
 }
 
@@ -44,3 +44,11 @@ glob("*.*", function(err, files) {
 	console.log("INFO:", texttoreplace, replacewith, prepend);
 	console.log(processed + " files processed");
 });
+
+
+function help(){
+	console.log("=================")
+	console.log("OPTIONS:")
+	console.log("--text --with --prepend")
+	console.log("=================")
+}
